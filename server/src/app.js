@@ -4,8 +4,8 @@ import routes from './api';
 
 const app = express();
 
-// middleware(app);
-// routes(app);
+middleware(app);
+routes(app);
 
 app.listen(3000, function(err) {
   if(err) {
