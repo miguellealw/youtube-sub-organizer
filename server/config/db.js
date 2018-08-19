@@ -4,7 +4,8 @@ import { setupModels } from '../src/api';
 
 const models = [
   require('../src/api/category/categoryModel'),
-  require('../src/api/subs/subsModel')
+  require('../src/api/subs/subsModel'),
+  require('../src/api/user/userModel')
 ];
 
 const connection = new Sequelize({
@@ -19,12 +20,22 @@ const connection = new Sequelize({
 connection
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    console.log(`
+    <========================================>
+      Connection to DB has been established successfully...
+    <========================================>`);
   })
   .catch(err => {
-    console.error('Unable to connect to the database:', err);
+    console.error('Unable to connect to the database 🤬:', err);
   });
 
-setupModels(Sequelize, connection, models);
+export const userModel = connection.define('user', {
+  name: Sequelize.STRING,
+  profileId: Sequelize.STRING,
+  accessToken: Sequelize.STRING,
+  refreshToken: Sequelize.STRING,
+})
+
+// setupModels(Sequelize, connection, models);
 
 connection.sync();
