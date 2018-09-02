@@ -1,18 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter as Router } from "react-router-dom";
+import registerServiceWorker from "./registerServiceWorker";
 
-const rootEl = document.getElementById('root');
+const rootEl = document.getElementById("root");
 
 let render = () => {
-  ReactDOM.render(<App />, rootEl);
-}
+  ReactDOM.render(
+    <Router>
+      <App />
+    </Router>,
+    rootEl
+  );
+};
 
 // Hot Module Reload 😱
-if(module.hot) {
-  module.hot.accept('./App', () => {
+if (module.hot) {
+  module.hot.accept("./App", () => {
     setTimeout(render);
   });
 }

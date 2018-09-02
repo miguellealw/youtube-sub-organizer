@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
 import SubsList from './components/SubsList';
+import Layout from './app/Layout'
+import AuthContext from './contexts/AuthContext';
 
 class App extends Component {
   state = {
@@ -11,6 +13,7 @@ class App extends Component {
 
   componentDidMount = async () => {
     const currentUser = await axios.get("/api/v1/user/current_user");
+    // TODO: come up with better way to tell if user is authed
     this.setState({ currentUser: currentUser.data });
 
     this.fetchYoutubeData();
@@ -27,22 +30,21 @@ class App extends Component {
         Authorization: `Bearer ${this.state.currentUser.accessToken}`
       }
     });
-    // const response = await axios.get('/api/v1/user/subs');
-    // console.log(response)
 
     this.setState({ subs: response.data });
   };
 
   render() {
+    const contextValue = {
+      currentUser: this.state.currentUser,
+      subs: this.state.subs
+    }
     return (
-      <div>
-        <Navigation currentUser={this.state.currentUser} />
-        <h1 className="">YouTube Sub Organizer</h1>
-
-        {!this.state.currentUser && <p>You're not logged in</p>}
-
-        <SubsList subs={this.state.subs} currentUser={this.state.currentUser}/>
-      </div>
+      <AuthContext.Provider value={contextValue}>
+        <div className="content">
+          <Layout />
+        </div>
+      </AuthContext.Provider>
     );
   }
 }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-export default class Header extends Component {
+export default class  extends Component {
   render() {
     return (
       <div>
-        
-      </div>
+        <h1>Dashboard</h1>
+      </div>      
     );
   }
 }
