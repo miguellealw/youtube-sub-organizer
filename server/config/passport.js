@@ -2,6 +2,7 @@ import passport from 'passport';
 import keys from '../config/keys';
 // import userModel from '../src/api/user/userModel';
 import { userModel } from './db';
+import { access } from 'fs';
 
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const YoutubeV3Strategy = require('passport-youtube-v3').Strategy
@@ -13,6 +14,8 @@ const YoutubeV3Strategy = require('passport-youtube-v3').Strategy
 */
 // grab info(id) and put into cookie and send to client
 passport.serializeUser((user, done) => {
+  // change id to user.id and not profile id
+  // because user can have multiple profile id's from multiple providers
   done(null, user[0].profileId);
 })
 
@@ -60,9 +63,11 @@ passport.use(
           }
         })
 
-        // if(user.accessToken !== accessToken) {
-        //   // await user.
-        // }
+        // Check if accesstoken has expired
+        // if so, update the token with the new token
+        if(user.accessToken !== accessToken) {
+          await userModel.update({ accessToken }, { where: { profileId: profile.id } })
+        }
 
         // whatever is passed as second arg will be assigned to req.user
         done(null, user);

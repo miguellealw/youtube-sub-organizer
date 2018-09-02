@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/app.js",
+    "server": "cross-env NODE_ENV=development nodemon --exec babel-node src/app.js",
+    "client": "cd ../client && cross-env PORT=3000 yarn start",
+    "start:dev": "concurrently \"yarn client\" \"yarn server\" ",
     "start:prod": "cross-env NODE_ENV=production nodemon --exec babel-node src/app.js"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.0.1"
   }
 }
