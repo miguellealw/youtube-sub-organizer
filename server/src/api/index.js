@@ -2,7 +2,7 @@
 // import categoryRoutes from './category/categoryRoutes';
 import userRoutes from './user/userRoutes';
 import passport from 'passport';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default (app) => {
   /* 
@@ -10,7 +10,6 @@ export default (app) => {
     Regular Routes
   <========================================>
   */
-  // app.use('/', (_, res) => res.send('hello worldsss'));
   app.use('/failedLogin', (_, res) => res.send('failed login...') )
   app.use('/home', (_, res) => res.send('This is home') );
   // app.use('/api/v1/category', categoryRoutes);
@@ -35,10 +34,7 @@ export default (app) => {
         failureRedirect: '/failedLogin', 
         successRedirect: 'http://localhost:3000/' 
       }
-    ),
-    // (req, res) => {
-    //   res.json(req.user);
-    // }
+    )
   );
 }
 
