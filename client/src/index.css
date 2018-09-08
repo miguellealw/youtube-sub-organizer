@@ -3735,23 +3735,23 @@ a.dropdown-item {
 .menu-list {
   line-height: 1.25; }
   .menu-list a {
-    border-radius: 2px;
-    color: #4a4a4a;
+    border-radius: 0px;
+    color: #aaaec9;
     display: block;
     padding: 0.5em 0.75em; }
     .menu-list a:hover {
-      background-color: whitesmoke;
-      color: #363636; }
+      background-color: #373b57;
+      color: white; }
     .menu-list a.is-active {
       background-color: #3273dc;
       color: #fff; }
   .menu-list li ul {
-    border-left: 1px solid #dbdbdb;
+    border-left: 1px solid #414566;
     margin: 0.75em;
     padding-left: 0.75em; }
 
 .menu-label {
-  color: #7a7a7a;
+  color: #7b81ab;
   font-size: 0.75em;
   letter-spacing: 0.1em;
   text-transform: uppercase; }

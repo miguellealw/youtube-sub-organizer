@@ -1,5 +1,10 @@
 import React from "react";
-import Card from "./Card";
+import Subs from "./subslist/Subs";
+import styled from "react-emotion";
+
+const SubsListContainer = styled("div")`
+  width: 85%;
+`
 
 const ExpiredTokenMessage = () => (
   <div>
@@ -7,42 +12,18 @@ const ExpiredTokenMessage = () => (
     <span role="img" aria-label="sad face">
       😑
     </span>{" "}
-    — Delete user from db and login again...
+    — Logout and Login Again...
   </div>
 );
 
-const Subs = ({ _subs }) => (
-  <ul className="columns is-multiline">
-    {_subs &&
-      _subs.items.map((sub, i) => (
-        //TODO: change high quality thumbnail to default quality
-        <a
-          href={`https://www.youtube.com/channel/${
-            sub.snippet.resourceId.channelId
-          }`}
-          target="_blank"
-          className="column is-one-quarter"
-        >
-          <Card
-            key={sub.id}
-            img={sub.snippet.thumbnails.high.url}
-            title={sub.snippet.title}
-            description={sub.snippet.description}
-            i={i}
-          />
-        </a>
-      ))}
-  </ul>
-);
-
 const SubsList = ({ subs, currentUser }) => (
-  <React.Fragment>
+  <SubsListContainer>
     {subs === "" && currentUser ? (
       <ExpiredTokenMessage />
     ) : (
       <Subs _subs={subs} />
     )}
-  </React.Fragment>
+  </SubsListContainer>
 );
 
 export default SubsList;

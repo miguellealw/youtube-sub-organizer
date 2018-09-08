@@ -1,2 +1,20 @@
-@import 'bulma/bulma';
+@charset "utf-8";
+@import "bulma/sass/utilities/initial-variables";
+@import "bulma/sass/utilities/functions";
 // @import 'bulma-extensions/extensions';
+
+// $body-background-color: #f3f3f3;
+// $primary: red;
+
+// My Colors
+$menu-color: #2d3047;
+
+// Menu Colors
+$menu-item-color: lighten($menu-color, 50%);
+$menu-list-border-left: 1px solid lighten($menu-color, 10%);
+$menu-item-radius: 0px;
+$menu-label-color: lighten($menu-color, 35%);
+$menu-item-hover-background-color: lighten($menu-color, 5%);
+$menu-item-hover-color: white;
+
+@import "bulma/bulma.sass";
