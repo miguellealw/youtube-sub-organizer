@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Layout from "./app/Layout";
 import AuthContext from "./contexts/AuthContext";
+import { withRouter } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -13,19 +14,19 @@ class App extends Component {
   };
 
   componentDidMount = async () => {
-    const currentUser = await axios.get("api/v1/user/current_user");
-    // console.log('currentUser', currentUser)
+    const currentUser = await axios({
+      url: "api/v1/user/current_user",
+      method: "get"
+    });
+
     // TODO: come up with better way to tell if user is authed
     this.setState({ currentUser: currentUser.data });
+
+    if (currentUser) {
+      this.props.history.push("/dashboard");
+    }
+
     this.fetchYoutubeData();
-
-    // try {
-    //   // if(currentUser) {
-    //   // }
-
-    // } catch(err) {
-    //   console.error('ERROR FETCHING USER', err);
-    // }
   };
 
   fetchYoutubeData = async () => {
@@ -45,11 +46,11 @@ class App extends Component {
 
     // const response = await axios("/api/v1/subscriptions");
 
-    this.setState({ 
-      subs: { 
-        subList: response.data, 
-        isLoading: false 
-      } 
+    this.setState({
+      subs: {
+        subList: response.data,
+        isLoading: false
+      }
     });
   };
 
@@ -58,6 +59,7 @@ class App extends Component {
       currentUser: this.state.currentUser,
       subs: this.state.subs
     };
+
     return (
       <AuthContext.Provider value={contextValue}>
         <div className="content">
@@ -68,4 +70,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -1,13 +1,31 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import HomePage from '../HomePage';
-import DashboardPage from '../DashboardPage';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import LandingPage from "../LandingPage";
+import DashboardPage from "../DashboardPage";
+import ChannelInfoPage from "../ChannelInfoPage";
+
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    component: LandingPage
+  },
+  {
+    path: "/dashboard",
+    component: DashboardPage
+  },
+  {
+    path: "/:subChannelId",
+    component: ChannelInfoPage
+  }
+];
 
 const Router = () => (
   <Switch>
-    <Route exact path="/" component={HomePage}/>
-    <Route exact path="/dashboard" component={DashboardPage} />
+    {routes.map((route, i) => (
+      <Route key={i} {...route} />
+    ))}
   </Switch>
-)
+);
 
 export default Router;
