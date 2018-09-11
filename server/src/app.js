@@ -1,9 +1,11 @@
-import routes from './api';
-const express = require('express');
-const middleware = require('../config/middleware');
-require('../config/db');
+import routes from "./api";
+const express = require("express");
+const middleware = require("../config/middleware");
+import { successServerStartup, errorServerStartup } from "../utils/logMessages";
+require("../config/db");
 
 const app = express();
+// const PORT = process.env.PORT || 5000;
 const PORT = 5000;
 
 /* 
@@ -30,10 +32,10 @@ app.use((req, res, next) => {
   Error handler if error is thrown from anywhere
   in the server by next(error)
 */
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   res.status(error.status || 500);
   res.json({
-    error: error.message,
+    error: error.message
   });
 });
 
@@ -43,16 +45,9 @@ app.use((error, req, res, next) => {
 <========================================>
 */
 app.listen(PORT, function(err) {
-  if(err) {
-    console.log(`
-      =============
-      Error Starting Server
-      ${err}
-      ============
-    `)
+  if (err) {
+    console.error(errorServerStartup(err));
   }
-  console.log(`
-  <========================================>
-    Server Running on http://localhost:${PORT}
-  <========================================>`);
+
+  console.log(successServerStartup(PORT));
 });
