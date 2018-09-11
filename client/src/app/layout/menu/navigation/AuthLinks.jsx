@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const AuthLinks = () => (
   <React.Fragment>
     <li>
-      <a className="is-active" href="#">
+      <NavLink activeClassName="is-active" to="/dashboard">
         Dashboard
-      </a>
+      </NavLink>
     </li>
     <li>
       <a href="http://localhost:5000/api/v1/user/logout">Logout</a>

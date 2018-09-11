@@ -1,30 +1,23 @@
 import React from "react";
-import { ClipLoader } from "react-spinners";
-// import { PulseLoader } from "react-spinners";
+import { NavLink } from "react-router-dom";
+import Spinner from "../../../../components/Spinner";
 
 const SubscriptionsMenuList = ({ subs }) => (
   <li>
     <a>My Subscriptions</a>
     <ul>
       {subs.isLoading ? (
-        <ClipLoader
-          loading={subs.isLoading}
-          sizeUnit={"px"}
-          size={30}
-          color={"#aaaec9"}
-        />
+        <Spinner subs={subs} />
       ) : (
         subs.subList.items.map(sub => (
           <React.Fragment key={sub.id}>
             <li>
-              <a
-                href={`https://www.youtube.com/channel/${
-                  sub.snippet.resourceId.channelId
-                }`}
-                target="_blank"
+              <NavLink
+                to={`/${sub.snippet.resourceId.channelId}`}
+                activeClassName="is-active"
               >
                 {sub.snippet.title}
-              </a>
+              </NavLink>
             </li>
           </React.Fragment>
         ))

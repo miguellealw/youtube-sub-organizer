@@ -1,9 +1,9 @@
 import styled from "react-emotion";
 
 const Site = styled("div")`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: stretch; */
   min-height: 100vh;
 `;
 
