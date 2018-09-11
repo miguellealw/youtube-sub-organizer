@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "axios": "^0.18.0",
     "bulma": "^0.7.1",
@@ -21,8 +21,7 @@
     "react-spinners": "^0.4.5"
   },
   "devDependencies": {
-    "react-scripts": "1.1.4",
-    "tailwindcss": "^0.6.4"
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
