@@ -4,7 +4,6 @@ import keys from '../config/keys';
 import { userModel } from './db';
 import { access } from 'fs';
 
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const YoutubeV3Strategy = require('passport-youtube-v3').Strategy
 
 /* 
@@ -49,7 +48,7 @@ passport.use(
   new YoutubeV3Strategy(
     youtubeOpts, 
     async (accessToken, refreshToken, profile, done) => {
-      // Refresh token used to automatically update accessToken when it expires
+      // Note: Refresh token - used to automatically update accessToken when it expires
 
       try {
         // Create or fetch user from our DB after authed by youtube

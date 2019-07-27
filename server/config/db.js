@@ -35,6 +35,17 @@ export const userModel = connection.define("user", {
   refreshToken: Sequelize.STRING
 });
 
+export const Category = connection.define("category", {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  slug: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
+});
+
 // setupModels(Sequelize, connection, models);
 
 connection.sync();

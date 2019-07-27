@@ -1,8 +1,9 @@
-// import subsRoutes from './subs/subsRoutes';
-// import categoryRoutes from './category/categoryRoutes';
-import userRoutes from './user/userRoutes';
 import passport from 'passport';
 // import axios from 'axios';
+
+import categoryRoutes from './category/categoryRoutes';
+import subsRoutes from './subs/subsRoutes';
+import userRoutes from './user/userRoutes';
 
 export default (app) => {
   /* 
@@ -11,9 +12,9 @@ export default (app) => {
   <========================================>
   */
   app.use('/failedLogin', (_, res) => res.send('failed login...') )
-  app.use('/home', (_, res) => res.send('This is home') );
-  // app.use('/api/v1/category', categoryRoutes);
-  // app.use('/api/v1/subscriptions', subsRoutes);
+  // app.use('/home', (_, res) => res.send('This is home') );
+  app.use('/api/v1/category', categoryRoutes);
+  app.use('/api/v1/subscriptions', subsRoutes);
   app.use('/api/v1/user', userRoutes);
 
 
