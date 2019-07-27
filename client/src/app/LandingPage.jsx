@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AuthContext from "../contexts/AuthContext";
 import styled from "react-emotion";
 import heroImg from "../images/hero-img.jpg";
 import logo from "../images/logo.png";
@@ -84,7 +83,7 @@ class LandingPage extends Component {
             <div className="container level">
               <div className="navbar-brand level-left">
                 <div className="navbar-item">
-                  <img src={`${logo}`} />
+                  <img src={`${logo}`} alt=""/>
                 </div>
               </div>
 
@@ -114,9 +113,7 @@ class LandingPage extends Component {
             </h1>
             <hr/>
             <h2 className="subtitle is-5">
-              {/* Subscribed to a lot of YouTube channels? Organize them! */}
-              Tired of Sifting Through your Messy YouTube Subscriptions Box? Organize
-              Them!
+              Organize your YouTube Subscription Box into Something that is Easy to Use.
             </h2>
           </div>
         </div>

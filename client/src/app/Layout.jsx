@@ -6,7 +6,6 @@ import AuthContext from "../contexts/AuthContext";
 import Site from "./layout/Site";
 import Menu from "./layout/Menu";
 import Content from "./layout/Content";
-import Footer from "./layout/Footer";
 import Router from "./layout/Router";
 import LandingPage from "./LandingPage";
 
@@ -19,9 +18,10 @@ const Layout = () => (
     {({ currentUser }) => (
       <Site className="has-background-white-ter">
         <Helmet title="Youtube Sub Organizer | Organize your Youtube Subscriptions" />
-        {!currentUser && <LandingPage />}
-
-        {currentUser && (
+        
+        {!currentUser ? (
+          <LandingPage />
+        ) : (
           <MainContent className="columns auto">
             <Menu />
             <Content className="column">
@@ -30,7 +30,7 @@ const Layout = () => (
           </MainContent>
         )}
 
-        <Footer />
+        {/* <Footer /> */}
       </Site>
     )}
   </AuthContext.Consumer>

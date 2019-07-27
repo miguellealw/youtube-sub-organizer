@@ -76,7 +76,7 @@ const ChannelInfoPage = ({ match }) => (
                 <img
                   className="is-rounded"
                   src={`${channelInfo.snippet.thumbnails.high.url}`}
-                  alt={`${channelInfo.snippet.title}'s Profile Picture`}
+                  alt={`${channelInfo.snippet.title}'s Profile`}
                 />
               </figure>
 

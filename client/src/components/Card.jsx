@@ -12,8 +12,8 @@ class Card extends Component {
         </div>
 
         {/* ==== Card Image ==== */}
-        <div class="card-image">
-          <figure class="image">
+        <div className="card-image">
+          <figure className="image">
             <img
               src={this.props.img}
               alt={`Profile Img of ${this.props.title}`}

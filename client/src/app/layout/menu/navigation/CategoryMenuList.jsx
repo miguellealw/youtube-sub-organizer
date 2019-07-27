@@ -2,7 +2,7 @@ import React from "react";
 
 const CategoryMenuList = () => (
   <li>
-    {/* FIXME: These are hard coded; should be dynamic */}
+    {/* FIXME: These are hard coded; should be coming from server */}
     <a>My Categories</a>
     <ul>
       <li>

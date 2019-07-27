@@ -1,9 +1,9 @@
 import React from 'react';
 import { ClipLoader } from "react-spinners";
 
-const Spinner = ({subs}) => (
+const Spinner = ({isLoading}) => (
   <ClipLoader
-    loading={subs.isLoading}
+    loading={isLoading}
     sizeUnit={"px"}
     size={30}
     color={"#aaaec9"}

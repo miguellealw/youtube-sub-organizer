@@ -7,7 +7,7 @@ const SubscriptionsMenuList = ({ subs }) => (
     <a>My Subscriptions</a>
     <ul>
       {subs.isLoading ? (
-        <Spinner subs={subs} />
+        <Spinner isLoading={subs.isLoading} />
       ) : (
         subs.subList.items.map(sub => (
           <React.Fragment key={sub.id}>
