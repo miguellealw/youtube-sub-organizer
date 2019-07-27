@@ -36,22 +36,30 @@ class App extends Component {
       }
     });
 
-    const response = await axios({
-      url: `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&maxResults=25&mine=true&order=alphabetical`,
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${this.state.currentUser.accessToken}`
-      }
-    });
+    // const response = await axios({
+    //   url: `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&maxResults=25&mine=true&order=alphabetical`,
+    //   method: "get",
+    //   headers: {
+    //     Authorization: `Bearer ${this.state.currentUser.accessToken}`
+    //   }
+    // });
 
-    // const response = await axios("/api/v1/subscriptions");
-
-    this.setState({
-      subs: {
-        subList: response.data,
-        isLoading: false
-      }
-    });
+    try {
+      const response = await axios("/api/v1/subscriptions");
+      
+      this.setState({
+        subs: {
+          subList: response.data.data,
+          isLoading: false
+        }
+      });
+    } catch (error) {
+      this.setState({
+        subs: {
+          isLoading: false
+        }
+      })
+    }
   };
 
   render() {
