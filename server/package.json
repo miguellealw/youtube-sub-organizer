@@ -10,7 +10,7 @@
     "start:prod": "cross-env NODE_ENV=production nodemon --exec babel-node src/app.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "chalk": "^2.4.1",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
